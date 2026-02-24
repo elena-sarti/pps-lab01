@@ -13,4 +13,50 @@ package tdd;
  *   - Introduce methods in the interface in order to make the tests pass.
  *   - Refactor
  */
-public interface CircularQueue { }
+public interface CircularQueue {
+
+    /**
+     * Stores an integer in the queue.
+     *
+     * @param storedValue The integer to store.
+     */
+    void store(int storedValue);
+
+    /**
+     * Removes and retrieves the element that occupies the first position in the queue.
+     *
+     * @return the element removed from the queue.
+     * @throws IllegalStateException if the stack is empty.
+     */
+    int remove();
+
+    /**
+     * Gets the minimum value currently in the queue.
+     *
+     * @return The minimum value in the queue.
+     * @throws IllegalStateException if the queue is empty.
+     */
+    int getMin();
+
+    /**
+     * Gets the maximum value currently in the queue.
+     *
+     * @return The maximum value in the queue.
+     * @throws IllegalStateException if the queue is empty.
+     */
+    int getMax();
+
+    /**
+     * Checks if the queue is empty.
+     *
+     * @return true if the queue is empty, false otherwise.
+     */
+    boolean isEmpty();
+
+    /**
+     * Gets the number of elements currently in the queue.
+     *
+     * @return The size of the stack.
+     */
+    int size();
+}
