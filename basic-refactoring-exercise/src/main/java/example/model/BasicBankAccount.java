@@ -1,5 +1,10 @@
 package example.model;
 
+/**
+ * This class represent a particular instance of a BankAccount.
+ * In particular, a Basic Bank Account allows always the deposit
+ * while the withdrawal is allowed only if the balance greater or equal the withdrawal amount
+ */
 abstract class BasicBankAccount implements BankAccount{
     public double balance;
     public final AccountHolder holder;
@@ -27,5 +32,6 @@ abstract class BasicBankAccount implements BankAccount{
 
     public abstract void withdraw(final int userID, final double amount);
 
-    abstract boolean isWithdrawAllowed(final double amount);
+    public abstract boolean isWithdrawAllowed(final double amount);
+
 }

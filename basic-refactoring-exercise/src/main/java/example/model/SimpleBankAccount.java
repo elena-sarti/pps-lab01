@@ -1,9 +1,8 @@
 package example.model;
 
 /**
- * This class represent a particular instance of a BankAccount.
- * In particular, a Simple Bank Account allows always the deposit
- * while the withdrawal is allowed only if the balance greater or equal the withdrawal amount
+ * This class represent a particular instance of a Basic Bank Account.
+ * In particular, a Simple Bank Account no fee is applied when withdrawing money.
  */
 public class SimpleBankAccount extends BasicBankAccount {
 
@@ -17,8 +16,5 @@ public class SimpleBankAccount extends BasicBankAccount {
         }
     }
 
-    public boolean isWithdrawAllowed(final double amount){
-        return balance >= amount;
-    }
-
+    public boolean isWithdrawAllowed(final double amount){ return balance >= amount; }
 }
