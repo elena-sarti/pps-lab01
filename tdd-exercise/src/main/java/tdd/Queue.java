@@ -24,7 +24,6 @@ public class Queue implements CircularQueue{
         return queue.remove();
     }
 
-
     @Override
     public boolean isEmpty(){
         return isQueueEmpty;

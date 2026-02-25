@@ -3,7 +3,7 @@ package tdd;
 public class DoorLock implements SmartDoorLock{
     private static final int PIN_DIGITS = 4;
     private static final int MAXIMUM_NUMBER_OF_UNLOCKING_ATTEMPTS = 5;
-    public static String pin;
+    public String pin;
     private static boolean isDoorLocked = false;
     private static boolean isDoorBlocked = false ;
     private static int numberOfFailedAttempts;
@@ -21,7 +21,7 @@ public class DoorLock implements SmartDoorLock{
             isDoorLocked = false;
         } else {
             numberOfFailedAttempts += 1;
-            isDoorBlocked = numberOfFailedAttempts < MAXIMUM_NUMBER_OF_UNLOCKING_ATTEMPTS ? false : true;
+            isDoorBlocked = numberOfFailedAttempts >= MAXIMUM_NUMBER_OF_UNLOCKING_ATTEMPTS;
         }
     }
 

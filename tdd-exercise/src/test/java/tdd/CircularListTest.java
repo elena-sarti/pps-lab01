@@ -15,6 +15,8 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class CircularListTest {
     public static final int VALUE_TO_STORE = 1;
+    public static final int QUEUE_EXPECTED_MINIMUM = 1;
+    public static final int QUEUE_EXPECTED_MAXIMUM = Queue.QUEUE_CAPACITY;
     Queue queue;
 
     @BeforeEach
@@ -53,15 +55,15 @@ public class CircularListTest {
         int expectedValue = 0;
         for(int naturalNumber = 0; naturalNumber <= Queue.QUEUE_CAPACITY; naturalNumber++) {
             queue.store(naturalNumber);
-            expectedValue = Queue.QUEUE_CAPACITY - naturalNumber + 1;
+            expectedValue = Queue.QUEUE_CAPACITY - naturalNumber + QUEUE_EXPECTED_MINIMUM;
         }
         assertEquals(expectedValue, queue.remove());
     }
 
     @Test
     public void isGetMaxPossible(){
-        for(int naturalNumber = 0; naturalNumber <= Queue.QUEUE_CAPACITY; naturalNumber++) { queue.store(naturalNumber); }
-        assertEquals(Queue.QUEUE_CAPACITY, queue.getMax());
+        for(int naturalNumber = QUEUE_EXPECTED_MINIMUM; naturalNumber <= QUEUE_EXPECTED_MAXIMUM; naturalNumber++) { queue.store(naturalNumber); }
+        assertEquals(QUEUE_EXPECTED_MAXIMUM, queue.getMax());
     }
 
     @Test
@@ -71,8 +73,8 @@ public class CircularListTest {
 
     @Test
     public void isGetMinPossible(){
-        for(int naturalNumber = 0; naturalNumber <= Queue.QUEUE_CAPACITY; naturalNumber++) { queue.store(naturalNumber); }
-        assertEquals(1, queue.getMin());
+        for(int naturalNumber = QUEUE_EXPECTED_MINIMUM; naturalNumber <= QUEUE_EXPECTED_MAXIMUM; naturalNumber++) { queue.store(naturalNumber); }
+        assertEquals(QUEUE_EXPECTED_MINIMUM, queue.getMin());
     }
 
     @Test

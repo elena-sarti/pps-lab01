@@ -62,6 +62,6 @@ public class SmartDoorLockTest {
         assertFalse(doorLock.isLocked());
         assertFalse(doorLock.isBlocked());
         assertNull(doorLock.pin);
-        assertEquals(doorLock.getFailedAttempts(),0);
+        assertEquals(0, doorLock.getFailedAttempts());
     }
 }
