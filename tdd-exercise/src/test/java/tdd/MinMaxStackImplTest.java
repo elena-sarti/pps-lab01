@@ -22,58 +22,58 @@ class MinMaxStackImplTest {
     }
 
     @Test
-    public void isStackInitiallyEmpty(){
+    public void testStackInitiallyEmpty(){
         assertTrue(stack.isEmpty());
     }
 
     @Test
-    public void isPushPossible(){
+    public void testPush(){
         stack.push(VALUE_TO_PUSH);
         assertFalse(stack.isEmpty());
     }
 
     @Test
-    public void isPopPossibleStackEmpty(){
+    public void testPopStackEmpty(){
         assertThrows(IllegalStateException.class, () -> stack.pop());
     }
 
     @Test
-    public void isPopPossible(){
+    public void testPop(){
         stack.push(VALUE_TO_PUSH);
         assertEquals(VALUE_TO_PUSH, stack.pop());
         assertTrue(stack.isEmpty());
     }
 
     @Test
-    public void isPeekPossibleStackEmpty(){
+    public void testPeekStackEmpty(){
         assertThrows(IllegalStateException.class, () -> stack.peek());
     }
 
     @Test
-    public void isPeekPossible(){
+    public void testPeek(){
         stack.push(VALUE_TO_PUSH);
         assertEquals(VALUE_TO_PUSH, stack.peek());
         assertFalse(stack.isEmpty());
     }
 
     @Test
-    public void isGetMaxPossibleStackEmpty(){
+    public void testGetMaxStackEmpty(){
         assertThrows(IllegalStateException.class, () -> stack.getMax());
     }
 
     @Test
-    public void isGetMaxPossible(){
+    public void testGetMax(){
         pushProgressiveNumbers();
         assertEquals(stack.getMax(), Arrays.stream(TEST_STACK).max().getAsInt());
     }
 
     @Test
-    public void isGetMinPossibleStackEmpty(){
+    public void testGetMinStackEmpty(){
         assertThrows(IllegalStateException.class, () -> stack.getMin());
     }
 
     @Test
-    public void isGetMinPossible(){
+    public void testGetMin(){
         pushProgressiveNumbers();
         assertEquals(stack.getMin(), Arrays.stream(TEST_STACK).min().getAsInt());
     }

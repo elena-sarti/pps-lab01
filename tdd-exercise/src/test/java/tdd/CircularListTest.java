@@ -25,12 +25,12 @@ public class CircularListTest {
     }
 
     @Test
-    public void isQueueInitiallyEmpty(){
+    public void testQueueInitiallyEmpty(){
         assertTrue(queue.isEmpty());
     }
 
     @Test
-    public void isStoringPossible(){
+    public void testStoring(){
         int elementsStored = 1;
         queue.store(VALUE_TO_STORE);
         assertFalse(queue.isEmpty());
@@ -38,7 +38,7 @@ public class CircularListTest {
     }
 
     @Test
-    public void isRemovingPossible(){
+    public void testRemoving(){
         int elementsRemoved = 1;
         storeProgressiveNumbers(0, Queue.QUEUE_CAPACITY - 1);
         removeElements(elementsRemoved);
@@ -46,35 +46,35 @@ public class CircularListTest {
     }
 
     @Test
-    public void isRemovingPossibleEmptyQueue(){
+    public void testStoringEmptyQueue(){
         assertThrows(IllegalStateException.class, () -> queue.remove());
     }
 
     @Test
-    public void isStoringPossibleExceedingCapacity(){
+    public void testStoringExceedingCapacity(){
         storeProgressiveNumbers(QUEUE_EXPECTED_MINIMUM,QUEUE_EXPECTED_MAXIMUM+1);
         assertEquals(QUEUE_EXPECTED_MINIMUM + 1, queue.remove());
     }
 
     @Test
-    public void isGetMaxPossible(){
+    public void testGetMax(){
         storeProgressiveNumbers(QUEUE_EXPECTED_MINIMUM,QUEUE_EXPECTED_MAXIMUM);
         assertEquals(QUEUE_EXPECTED_MAXIMUM, queue.getMax());
     }
 
     @Test
-    public void isGetMaxPossibleEmptyQueue(){
+    public void testGetMaxEmptyQueue(){
         assertThrows(IllegalStateException.class, () -> queue.getMin());
     }
 
     @Test
-    public void isGetMinPossible(){
+    public void testGetMin(){
         storeProgressiveNumbers(QUEUE_EXPECTED_MINIMUM,QUEUE_EXPECTED_MAXIMUM);
         assertEquals(QUEUE_EXPECTED_MINIMUM, queue.getMin());
     }
 
     @Test
-    public void isGetMinPossibleEmptyQueue(){
+    public void testGetMinEmptyQueue(){
         assertThrows(IllegalStateException.class, () -> queue.getMin());
     }
 

@@ -10,10 +10,6 @@ public class SmartDoorLockTest {
     public static final String INCORRECT_PIN = "1111";
     DoorLock doorLock;
 
-    public void blockingDoor(){
-        for(int numberOfAttempts = 0; numberOfAttempts < doorLock.getMaxAttempts(); numberOfAttempts++){ doorLock.unlock(INCORRECT_PIN); }
-    }
-
     @BeforeEach
     public void beforeEach(){
         doorLock = new DoorLock();
@@ -21,52 +17,52 @@ public class SmartDoorLockTest {
     }
 
     @Test
-    public void canPinBeSet(){
+    public void testSetPin(){
         assertNotNull(doorLock.pin);
     }
 
     @Test
-    public void canDoorBeLocked(){
+    public void testLock(){
         doorLock.lock();
         assertTrue(doorLock.isLocked());
     }
 
     @Test
-    public void canDoorBeLockedIfPinNotSet(){
+    public void testLockPinNotSet(){
         doorLock.reset();
         assertThrows(IllegalStateException.class, () -> doorLock.lock());
     }
 
     @Test
-    public void canDoorBeUnlockedRightPin(){
+    public void testUnlockRightPin(){
         doorLock.lock();
         doorLock.unlock(CORRECT_PIN);
         assertFalse(doorLock.isLocked());
     }
 
     @Test
-    public void canDoorBeUnlockedWrongPin(){
+    public void testUnlockWrongPin(){
         doorLock.lock();
         doorLock.unlock(INCORRECT_PIN);
         assertTrue(doorLock.isLocked());
     }
 
     @Test
-    public void canDoorBeBlocked(){
+    public void testBlock(){
         doorLock.lock();
         blockingDoor();
         assertTrue(doorLock.isBlocked());
     }
 
     @Test
-    public void testUnlockingWhenBlocked(){
+    public void testUnlockWhenBlocked(){
         doorLock.lock();
         blockingDoor();
         assertThrows(IllegalStateException.class, () -> doorLock.unlock(CORRECT_PIN) );
     }
 
     @Test
-    public void canDoorBeResetted(){
+    public void testReset(){
         doorLock.lock();
         blockingDoor();
         doorLock.reset();
@@ -74,5 +70,9 @@ public class SmartDoorLockTest {
         assertFalse(doorLock.isBlocked());
         assertNull(doorLock.pin);
         assertEquals(0, doorLock.getFailedAttempts());
+    }
+
+    public void blockingDoor(){
+        for(int numberOfAttempts = 0; numberOfAttempts < doorLock.getMaxAttempts(); numberOfAttempts++){ doorLock.unlock(INCORRECT_PIN); }
     }
 }
