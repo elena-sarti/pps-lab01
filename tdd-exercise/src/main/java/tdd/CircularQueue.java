@@ -28,7 +28,7 @@ public interface CircularQueue {
      * @return the element removed from the queue.
      * @throws IllegalStateException if the stack is empty.
      */
-    int remove();
+    int remove() throws IllegalStateException;
 
     /**
      * Gets the minimum value currently in the queue.
@@ -36,7 +36,7 @@ public interface CircularQueue {
      * @return The minimum value in the queue.
      * @throws IllegalStateException if the queue is empty.
      */
-    int getMin();
+    int getMin() throws IllegalStateException;
 
     /**
      * Gets the maximum value currently in the queue.
@@ -44,7 +44,7 @@ public interface CircularQueue {
      * @return The maximum value in the queue.
      * @throws IllegalStateException if the queue is empty.
      */
-    int getMax();
+    int getMax() throws IllegalStateException;
 
     /**
      * Checks if the queue is empty.

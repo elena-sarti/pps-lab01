@@ -14,7 +14,7 @@ public class Stack implements MinMaxStack{
     }
 
     @Override
-    public int pop() {
+    public int pop() throws IllegalStateException {
         if (stack.isEmpty()){ throw new IllegalStateException("Stack currently empty"); }
         int poppedValue = stack.remove(stack.size()-1);
         if (stack.isEmpty()) { isStackEmpty = true; }
@@ -22,9 +22,9 @@ public class Stack implements MinMaxStack{
     }
 
     @Override
-    public int peek() {
+    public int peek() throws IllegalStateException {
         if (stack.isEmpty()){ throw new IllegalStateException("Stack currently empty"); }
-        return stack.get(stack.size()-1);
+        return stack.get(stack.size() - 1);
     }
 
     @Override

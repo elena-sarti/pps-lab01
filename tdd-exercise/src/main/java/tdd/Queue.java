@@ -17,7 +17,7 @@ public class Queue implements CircularQueue{
     }
 
     @Override
-    public int remove(){
+    public int remove() throws IllegalStateException {
         if (queue.isEmpty()) {throw new IllegalStateException("Queue currently empty.");}
         queueAlreadyFull -= 1;
         if (queueAlreadyFull == 0) { isQueueEmpty = true; }
@@ -35,13 +35,13 @@ public class Queue implements CircularQueue{
     }
 
     @Override
-    public int getMax() {
+    public int getMax() throws IllegalStateException {
         if(isQueueEmpty) { throw new IllegalStateException("Queue currently empty."); }
         return queue.stream().mapToInt(Integer::intValue).max().getAsInt();
     }
 
     @Override
-    public int getMin() {
+    public int getMin() throws IllegalStateException {
         if(isQueueEmpty) { throw new IllegalStateException("Queue currently empty."); }
         return queue.stream().mapToInt(Integer::intValue).min().getAsInt();
     }

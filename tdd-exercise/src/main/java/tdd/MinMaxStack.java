@@ -24,7 +24,7 @@ public interface MinMaxStack {
      * @return The popped element.
      * @throws IllegalStateException if the stack is empty.
      */
-    int pop();
+    int pop() throws IllegalStateException;
 
     /**
      * Retrieves, but does not remove, the top element of the stack.
@@ -32,7 +32,7 @@ public interface MinMaxStack {
      * @return The top element of the stack.
      * @throws IllegalStateException if the stack is empty.
      */
-    int peek();
+    int peek() throws IllegalStateException;
 
     /**
      * Gets the minimum value currently in the stack.
