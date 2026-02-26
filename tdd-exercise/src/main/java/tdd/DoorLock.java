@@ -16,7 +16,8 @@ public class DoorLock implements SmartDoorLock{
     }
 
     @Override
-    public void unlock(String pin) {
+    public void unlock(String pin) throws IllegalStateException {
+        if (numberOfFailedAttempts==MAXIMUM_NUMBER_OF_UNLOCKING_ATTEMPTS){ throw new IllegalStateException("Door currently blocked."); }
         if ( pin.equals(this.pin) ) {
             isDoorLocked = false;
         } else {
@@ -26,7 +27,7 @@ public class DoorLock implements SmartDoorLock{
     }
 
     @Override
-    public void lock() {
+    public void lock() throws IllegalStateException {
         if ( this.pin == null ) { throw new IllegalStateException("Pin not set yet."); }
         isDoorLocked = true;
     }

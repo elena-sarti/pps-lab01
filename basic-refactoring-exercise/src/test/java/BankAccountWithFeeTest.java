@@ -12,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
  * The test suite for testing the BankAccountWithFee implementation
  */
 public class BankAccountWithFeeTest {
+
     public static final int NOT_DEFINED_USER_ID = 2;
     private static final int STARTING_BALANCE = 0;
     public static final int DEPOSITED_AMOUNT = 100;

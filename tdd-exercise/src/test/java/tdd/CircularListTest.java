@@ -40,8 +40,8 @@ public class CircularListTest {
     @Test
     public void isRemovingPossible(){
         int elementsRemoved = 1;
-        for(int queuePosition = 0; queuePosition < Queue.QUEUE_CAPACITY; queuePosition++) {queue.store(VALUE_TO_STORE);}
-        for (int i = 0; i < elementsRemoved; i++){ queue.remove(); }
+        storeProgressiveNumbers(0, Queue.QUEUE_CAPACITY - 1);
+        removeElements(elementsRemoved);
         assertEquals(Queue.QUEUE_CAPACITY - elementsRemoved, queue.size());
     }
 
@@ -52,33 +52,37 @@ public class CircularListTest {
 
     @Test
     public void isStoringPossibleExceedingCapacity(){
-        int expectedValue = 0;
-        for(int naturalNumber = 0; naturalNumber <= Queue.QUEUE_CAPACITY; naturalNumber++) {
-            queue.store(naturalNumber);
-            expectedValue = Queue.QUEUE_CAPACITY - naturalNumber + QUEUE_EXPECTED_MINIMUM;
-        }
-        assertEquals(expectedValue, queue.remove());
+        storeProgressiveNumbers(QUEUE_EXPECTED_MINIMUM,QUEUE_EXPECTED_MAXIMUM+1);
+        assertEquals(QUEUE_EXPECTED_MINIMUM + 1, queue.remove());
     }
 
     @Test
     public void isGetMaxPossible(){
-        for(int naturalNumber = QUEUE_EXPECTED_MINIMUM; naturalNumber <= QUEUE_EXPECTED_MAXIMUM; naturalNumber++) { queue.store(naturalNumber); }
+        storeProgressiveNumbers(QUEUE_EXPECTED_MINIMUM,QUEUE_EXPECTED_MAXIMUM);
         assertEquals(QUEUE_EXPECTED_MAXIMUM, queue.getMax());
     }
 
     @Test
     public void isGetMaxPossibleEmptyQueue(){
-        assertThrows(IllegalStateException.class,() -> queue.getMin());
+        assertThrows(IllegalStateException.class, () -> queue.getMin());
     }
 
     @Test
     public void isGetMinPossible(){
-        for(int naturalNumber = QUEUE_EXPECTED_MINIMUM; naturalNumber <= QUEUE_EXPECTED_MAXIMUM; naturalNumber++) { queue.store(naturalNumber); }
+        storeProgressiveNumbers(QUEUE_EXPECTED_MINIMUM,QUEUE_EXPECTED_MAXIMUM);
         assertEquals(QUEUE_EXPECTED_MINIMUM, queue.getMin());
     }
 
     @Test
     public void isGetMinPossibleEmptyQueue(){
-        assertThrows(IllegalStateException.class,() -> queue.getMin());
+        assertThrows(IllegalStateException.class, () -> queue.getMin());
+    }
+
+    public void storeProgressiveNumbers(int firstNumber, int lastNumber){
+        for(int naturalNumber = firstNumber; naturalNumber <= lastNumber; naturalNumber++) { queue.store(naturalNumber); }
+    }
+
+    public void removeElements(int elementsToRemove){
+        for (int i = 0; i < elementsToRemove; i++){ queue.remove(); }
     }
 }

@@ -11,9 +11,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MinMaxStackImplTest {
     public static final int VALUE_TO_PUSH = 1;
-    public static final int[] LIST_OF_NUMBERS = new int[]{1,2,3,4};
-    public static final int MIN_VALUE_OF_LIST = Arrays.stream(LIST_OF_NUMBERS).min().getAsInt();
-    public static final int MAX_VALUE_OF_LIST = Arrays.stream(LIST_OF_NUMBERS).max().getAsInt();
+    public static final int[] TEST_STACK = new int[]{1,2,3,4};
+    public static final int MIN_VALUE_OF_STACK = Arrays.stream(TEST_STACK).min().getAsInt();
+    public static final int MAX_VALUE_OF_STACK = Arrays.stream(TEST_STACK).max().getAsInt();
     Stack stack;
 
     @BeforeEach
@@ -34,7 +34,7 @@ class MinMaxStackImplTest {
 
     @Test
     public void isPopPossibleStackEmpty(){
-        assertThrows(IllegalStateException.class,()->stack.pop());
+        assertThrows(IllegalStateException.class, () -> stack.pop());
     }
 
     @Test
@@ -46,7 +46,7 @@ class MinMaxStackImplTest {
 
     @Test
     public void isPeekPossibleStackEmpty(){
-        assertThrows(IllegalStateException.class,()->stack.peek());
+        assertThrows(IllegalStateException.class, () -> stack.peek());
     }
 
     @Test
@@ -58,23 +58,27 @@ class MinMaxStackImplTest {
 
     @Test
     public void isGetMaxPossibleStackEmpty(){
-        assertThrows(IllegalStateException.class,()->stack.getMax());
+        assertThrows(IllegalStateException.class, () -> stack.getMax());
     }
 
     @Test
     public void isGetMaxPossible(){
-        for(int pushedNumeber = MIN_VALUE_OF_LIST; pushedNumeber <= MAX_VALUE_OF_LIST; pushedNumeber++) { stack.push(pushedNumeber); }
-        assertEquals(stack.getMax(), Arrays.stream(LIST_OF_NUMBERS).max().getAsInt());
+        pushProgressiveNumbers();
+        assertEquals(stack.getMax(), Arrays.stream(TEST_STACK).max().getAsInt());
     }
 
     @Test
     public void isGetMinPossibleStackEmpty(){
-        assertThrows(IllegalStateException.class,() -> stack.getMin());
+        assertThrows(IllegalStateException.class, () -> stack.getMin());
     }
 
     @Test
     public void isGetMinPossible(){
-        for(int pushedNumeber = MIN_VALUE_OF_LIST; pushedNumeber <= MAX_VALUE_OF_LIST; pushedNumeber++) { stack.push(pushedNumeber); }
-        assertEquals(stack.getMin(), Arrays.stream(LIST_OF_NUMBERS).min().getAsInt());
+        pushProgressiveNumbers();
+        assertEquals(stack.getMin(), Arrays.stream(TEST_STACK).min().getAsInt());
+    }
+
+    public void pushProgressiveNumbers(){
+        for(int pushedNumber = MIN_VALUE_OF_STACK; pushedNumber <= MAX_VALUE_OF_STACK; pushedNumber++) { stack.push(pushedNumber); }
     }
 }

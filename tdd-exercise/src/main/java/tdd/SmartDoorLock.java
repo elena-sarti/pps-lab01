@@ -24,13 +24,13 @@ public interface SmartDoorLock {
      *
      * @param pin The PIN entered by the user.
      */
-    void unlock(String pin);
+    void unlock(String pin) throws IllegalStateException, IllegalAccessException;
 
     /**
      * Locks the door.
      * If the pin is not set, an exception is thrown.
      */
-    void lock();
+    void lock() throws IllegalStateException;
 
     /**
      * Checks if the door is currently locked.
